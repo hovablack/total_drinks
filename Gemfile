@@ -8,3 +8,6 @@ gem "rspec", "~> 3.0"
 gem "pry"
 gem 'rest-client'
 gem 'json'
+gem 'colorize'
+gem 'tty'
+gem 'pastel'

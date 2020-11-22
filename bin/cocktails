@@ -2,4 +2,4 @@
 
 require_relative '../lib/total_drinks/'
 
-TotalDrinks::CLI.new.greeting
+TotalDrinks::CLI.new.call
