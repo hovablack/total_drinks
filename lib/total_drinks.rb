@@ -8,6 +8,7 @@ require 'colorize'
 require 'json'
 require 'pry'
 require 'tty'
+require 'table_print'
 
 module TotalDrinks
   class Error < StandardError; end

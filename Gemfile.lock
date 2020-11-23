@@ -44,6 +44,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.0)
+    table_print (1.5.7)
     tty (0.1.0)
     tty-color (0.6.0)
     unf (0.1.4)
@@ -61,6 +62,7 @@ DEPENDENCIES
   rake (~> 12.0)
   rest-client
   rspec (~> 3.0)
+  table_print
   total_drinks!
   tty
 
