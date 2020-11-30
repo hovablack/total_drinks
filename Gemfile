@@ -9,6 +9,3 @@ gem "pry"
 gem 'rest-client'
 gem 'json'
 gem 'colorize'
-gem 'tty'
-gem 'pastel'
-gem 'table_print'

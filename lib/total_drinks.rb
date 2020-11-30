@@ -7,8 +7,7 @@ require 'rest-client'
 require 'colorize'
 require 'json'
 require 'pry'
-require 'tty'
-require 'table_print'
+require 'colorized_string'
 
 module TotalDrinks
   class Error < StandardError; end

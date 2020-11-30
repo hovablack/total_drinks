@@ -9,7 +9,7 @@ class TotalDrinks::CLI
         puts "Welcome".center(117).colorize(:red)
         puts "To".center(117).colorize(:cyan)
         puts "The".center(117).colorize(:light_blue)
-        puts "AWESOME BAR!".center(117, "***").colorize(:green).colorize( :background => :red)
+        puts "AWESOME BAR!".center(117, "***").colorize(:green).colorize( :background => :red).bold
         puts " "
         seperator
         puts "Please enter your name".center(117).colorize(:yellow)
@@ -20,10 +20,13 @@ class TotalDrinks::CLI
     
     def addressed
         seperator
-        puts "Hi, #{@username}".center(117)
-        puts "I'm AB, your waiter today".center(117)
-        separator_to
+        puts "Hi, #{@username}".center(117).cyan.on_blue.bold
+        puts "I'm AB, your waiter today".center(117).cyan.on_blue.bold
+        seperator
         waiter
+        separator_to
+        TotalDrinks::API.get_data
+        mini_menu
     end
     
     def seperator
@@ -37,14 +40,11 @@ class TotalDrinks::CLI
     end
     
     def waiter
-        puts "If you would like quick drink, enter 'Drink'".center(117)
+        puts "If you would like quick drink, type 'Drink'".center(117)
         puts ""
-        puts "If you would like to see our selection, enter 'Menu'".center(117)
+        puts "If you would like to see our selection, type 'Menu'".center(117)
         puts ""
-        puts "If you want to leave the bar at anytime, enter 'Close'".center(117)
-        separator_to
-        TotalDrinks::API.get_data
-        mini_menu
+        puts "If you want to leave the bar at anytime, type 'Close'".center(117)
     end
     
     def main
@@ -64,21 +64,26 @@ class TotalDrinks::CLI
     end
 
     def recommend
-        all = []
-        rec = TotalDrinks::CocktailsDB.all
-        rec.map do |itm|
-            all.push(itm.strDrink)
-        end
-        all.sample
+        # all = []
+        rec = TotalDrinks::CocktailsDB.all.sample
+        puts "#{rec.strDrink}".center(117).blink
+        puts "#{rec.strInstructions}".center(117).blink
+        # p rec.center(117)
         # binding.pry
+        # rec.map do |itm|
+        #     all.push(itm.strDrink)
+        # end
+        # puts all.sample.center(117).blue.on_red.blink
+        mini_menu
     end
     
     def menu
         seperator
-        puts "Cocktail Menu".center(117)
+        puts "Cocktail Menu".center(117).black.on_white.blink
+        # mini_menu
         separator_to
         TotalDrinks::CocktailsDB.all.each_with_index do |cocktail, idx|
-            puts "#{idx + 1}. #{cocktail.strDrink}"
+            puts "#{idx + 1}. #{cocktail.strDrink}".center(58).blue.on_light_white.blink
         end
         separator_to
         puts "Type your drink name for more details".center(117)
@@ -103,20 +108,20 @@ class TotalDrinks::CLI
     
     def mini_menu
         seperator
-        puts "Please type your selection".center(117)
-        puts " "
-        puts "*Drink ------------------- Menu ------------------- Close*".center(117)
+        puts "Please type your selection".center(117).yellow.on_white
+        # puts " "
+        puts "*     -Drink-                                        -Menu-                                         -Close-     *".center(117).white.on_black.blink.underline
         main
     end
     
     
     def wrong_choice
-        puts "Oh no, we don't serve that, please make another selection."
+        puts "Oh no, we don't serve that, please make another selection.".red.blink
         main
     end
     
     def nothing_for_me
-        puts "Please come back soon #{@username}."
+        puts "Please come back soon #{@username}.".colorize(:color => :blue, :background => :red)
     end
 end
 
