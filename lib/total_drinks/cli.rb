@@ -29,15 +29,6 @@ class TotalDrinks::CLI
         mini_menu
     end
     
-    def seperator
-        puts "-------------------------------".center(117)
-        puts " "
-    end
-    
-    def separator_to
-        puts " "
-        puts "-------------------------------".center(117)
-    end
     
     def waiter
         puts "If you would like quick drink, type 'Drink'".center(117)
@@ -66,7 +57,7 @@ class TotalDrinks::CLI
     def recommend
         # all = []
         rec = TotalDrinks::CocktailsDB.all.sample
-        puts "#{rec.strDrink}".center(117).blink
+        puts "#{rec.strDrink}".center(117).magenta.blink
         puts "#{rec.strInstructions}".center(117).blink
         # p rec.center(117)
         # binding.pry
@@ -97,9 +88,9 @@ class TotalDrinks::CLI
         @shots.each do |cho|
             seperator
             puts "Drink ID: #{cho.idDrink}".center(117)
-            seperator
+            seperator_tail
             puts "Drink Category: #{cho.strCategory}".center(117)
-            seperator
+            seperator_tail
             puts "Instructions: #{cho.strInstructions}".center(117)
             separator_to
         end
@@ -123,5 +114,22 @@ class TotalDrinks::CLI
     def nothing_for_me
         puts "Please come back soon #{@username}.".colorize(:color => :blue, :background => :red)
     end
+
+    def seperator
+        puts "-------------------------------".center(117)
+        puts " "
+    end
+    
+    def separator_to
+        puts " "
+        puts "-------------------------------".center(117)
+    end
+
+    def seperator_tail
+        puts "-------------------------------".center(117).magenta
+        puts " "
+    end
+
+
 end
 
