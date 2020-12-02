@@ -24,7 +24,5 @@ class TotalDrinks::CocktailsDB
             cocktail.strDrink.downcase == drink
         end
     end
-
-    
     
 end

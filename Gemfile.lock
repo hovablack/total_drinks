@@ -42,6 +42,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.0)
+    tty-font (0.5.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
@@ -50,6 +51,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 2.1, >= 2.1.4)
   colorize
   json
   pry
@@ -57,6 +59,7 @@ DEPENDENCIES
   rest-client
   rspec (~> 3.0)
   total_drinks!
+  tty-font (~> 0.5.0)
 
 BUNDLED WITH
    2.1.4

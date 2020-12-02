@@ -24,7 +24,7 @@ class TotalDrinks::CLI
         puts "I'm AB, your waiter today".center(117).cyan.on_blue.bold
         seperator
         waiter
-        separator_to
+        separator_end
         TotalDrinks::API.get_data
         mini_menu
     end
@@ -72,11 +72,9 @@ class TotalDrinks::CLI
         seperator
         puts "Cocktail Menu".center(117).black.on_white.blink
         # mini_menu
-        separator_to
-        TotalDrinks::CocktailsDB.all.each_with_index do |cocktail, idx|
-            puts "#{idx + 1}. #{cocktail.strDrink}".center(58).blue.on_light_white.blink
-        end
-        separator_to
+        separator_end
+        drinks_list
+        separator_end
         puts "Type your drink name for more details".center(117)
         input = gets.strip.downcase
         puts "Excellent choice!"
@@ -87,14 +85,23 @@ class TotalDrinks::CLI
         @shots = TotalDrinks::CocktailsDB.find_by_name(water)
         @shots.each do |cho|
             seperator
+            puts "#{cho.strDrink}".cyan.on_light_white.bold.center(132)
+            seperator_mid
             puts "Drink ID: #{cho.idDrink}".center(117)
-            seperator_tail
+            seperator_mid
             puts "Drink Category: #{cho.strCategory}".center(117)
-            seperator_tail
+            seperator_mid
             puts "Instructions: #{cho.strInstructions}".center(117)
-            separator_to
+            separator_end
         end
         mini_menu
+    end
+
+    def drinks_list
+        tcdb = TotalDrinks::CocktailsDB.all.each_with_index do |cocktail, idx|
+            puts "#{idx + 1}. #{cocktail.strDrink}".center(58).blue.on_light_white.blink
+        end
+        tcdb
     end
     
     def mini_menu
@@ -120,16 +127,15 @@ class TotalDrinks::CLI
         puts " "
     end
     
-    def separator_to
+    def separator_end
         puts " "
         puts "-------------------------------".center(117)
     end
 
-    def seperator_tail
+    def seperator_mid
         puts "-------------------------------".center(117).magenta
         puts " "
     end
-
 
 end
 
