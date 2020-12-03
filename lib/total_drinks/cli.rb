@@ -55,16 +55,9 @@ class TotalDrinks::CLI
     end
 
     def recommend
-        # all = []
         rec = TotalDrinks::CocktailsDB.all.sample
         puts "#{rec.strDrink}".center(117).magenta.blink
         puts "#{rec.strInstructions}".center(117).blink
-        # p rec.center(117)
-        # binding.pry
-        # rec.map do |itm|
-        #     all.push(itm.strDrink)
-        # end
-        # puts all.sample.center(117).blue.on_red.blink
         mini_menu
     end
     

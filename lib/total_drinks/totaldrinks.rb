@@ -1,6 +1,6 @@
 class TotalDrinks::CocktailsDB
 
-    attr_accessor :idDrink, :strDrink, :strCategory, :strInstructions, :strIngredient
+    attr_accessor :idDrink, :strDrink, :strCategory, :strInstructions
 
     @@all = []
 
