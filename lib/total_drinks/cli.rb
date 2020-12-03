@@ -64,7 +64,6 @@ class TotalDrinks::CLI
     def menu
         seperator
         puts "Cocktail Menu".center(117).black.on_white.bold
-        # mini_menu
         separator_end
         drinks_list
         separator_end
@@ -100,7 +99,6 @@ class TotalDrinks::CLI
     def mini_menu
         seperator
         puts "Please type your selection".center(117).yellow.on_white
-        # puts " "
         puts "*     -Drink-                                        -Menu-                                         -Close-     *".center(117).white.on_black.blink.underline
         main
     end
