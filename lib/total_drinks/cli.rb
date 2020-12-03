@@ -56,14 +56,14 @@ class TotalDrinks::CLI
 
     def recommend
         rec = TotalDrinks::CocktailsDB.all.sample
-        puts "#{rec.strDrink}".center(117).magenta.blink
-        puts "#{rec.strInstructions}".center(117).blink
+        puts "#{rec.strDrink}".center(117).magenta
+        puts "#{rec.strInstructions}".center(117)
         mini_menu
     end
     
     def menu
         seperator
-        puts "Cocktail Menu".center(117).black.on_white.blink
+        puts "Cocktail Menu".center(117).black.on_white.bold
         # mini_menu
         separator_end
         drinks_list
@@ -92,7 +92,7 @@ class TotalDrinks::CLI
 
     def drinks_list
         tcdb = TotalDrinks::CocktailsDB.all.each_with_index do |cocktail, idx|
-            puts "#{idx + 1}. #{cocktail.strDrink}".center(58).blue.on_light_white.blink
+            puts "#{idx + 1}. #{cocktail.strDrink}".center(58).blue.on_light_white
         end
         tcdb
     end
@@ -104,7 +104,6 @@ class TotalDrinks::CLI
         puts "*     -Drink-                                        -Menu-                                         -Close-     *".center(117).white.on_black.blink.underline
         main
     end
-    
     
     def wrong_choice
         puts "Oh no, we don't serve that, please make another selection.".red.blink
