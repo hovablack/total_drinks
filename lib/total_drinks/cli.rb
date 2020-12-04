@@ -53,7 +53,7 @@ class TotalDrinks::CLI
         else
             wrong_choice
             sleep(1)
-            mini_menu   
+            mini_menu
         end
     end
 
@@ -78,7 +78,7 @@ class TotalDrinks::CLI
     end
     
     def menu_selection(drink)
-        shots = TotalDrinks::CocktailsDB.find_by_name(drink)
+        shots = TotalDrinks::CocktailsDB.find_by_name(drink) || (drink.to_i != 0 && TotalDrinks::CocktailsDB.all[drink.to_i - 1])
         if shots
             puts "Excellent choice!".center(58).green.on_light_white
             drink_details(shots)
@@ -90,6 +90,7 @@ class TotalDrinks::CLI
             menu
         end
     end
+
 
     def drink_details(cocktails)
         seperator
