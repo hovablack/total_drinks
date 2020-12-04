@@ -56,8 +56,10 @@ class TotalDrinks::CLI
     end
 
     def recommend
+        puts "Here is your drink, #{@username}".center(58).light_blue
         rec = TotalDrinks::CocktailsDB.all.sample
         puts "#{rec.strDrink}".center(117).magenta
+        seperator_mid
         puts "#{rec.strInstructions}".center(117)
         mini_menu
     end
@@ -70,14 +72,13 @@ class TotalDrinks::CLI
         separator_end
         puts "Type your drink name for more details".center(117)
         input = gets.strip.downcase
-        
         menu_selection(input)
     end
     
     def menu_selection(drink)
         shots = TotalDrinks::CocktailsDB.find_by_name(drink)
         if shots
-            puts "Excellent choice!"
+            puts "Excellent choice!".center(58).green.on_light_white
             drink_details(shots)
         elsif drink == "close"
             nothing_for_me
@@ -101,10 +102,9 @@ class TotalDrinks::CLI
     end
 
     def drinks_list
-        tcdb = TotalDrinks::CocktailsDB.all.each_with_index do |cocktail, idx|
+        TotalDrinks::CocktailsDB.all.each_with_index do |cocktail, idx|
             puts "#{idx + 1}. #{cocktail.strDrink}".center(58).blue.on_light_white
         end
-        tcdb
     end
     
     def mini_menu
