@@ -23,6 +23,7 @@ class TotalDrinks::CLI
         puts "Hi, #{@username}".center(117).cyan.on_blue.bold
         puts "I'm AB, your waiter today".center(117).cyan.on_blue.bold
         seperator
+        sleep(2)
         waiter
         separator_end
         TotalDrinks::API.get_data
@@ -51,6 +52,7 @@ class TotalDrinks::CLI
             nothing_for_me
         else
             wrong_choice
+            sleep(1.5)
             mini_menu   
         end
     end
@@ -84,6 +86,7 @@ class TotalDrinks::CLI
             nothing_for_me
         else
             wrong_choice
+            sleep(1.5)
             menu
         end
     end
