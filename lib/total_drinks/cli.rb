@@ -50,7 +50,8 @@ class TotalDrinks::CLI
         elsif input == "close"
             nothing_for_me
         else
-            wrong_choice   
+            wrong_choice
+            mini_menu   
         end
     end
 
@@ -69,23 +70,33 @@ class TotalDrinks::CLI
         separator_end
         puts "Type your drink name for more details".center(117)
         input = gets.strip.downcase
-        puts "Excellent choice!"
+        
         menu_selection(input)
     end
     
-    def menu_selection(water)
-        @shots = TotalDrinks::CocktailsDB.find_by_name(water)
-        @shots.each do |cho|
-            seperator
-            puts "#{cho.strDrink}".cyan.on_light_white.bold.center(132)
-            seperator_mid
-            puts "Drink ID: #{cho.idDrink}".center(117)
-            seperator_mid
-            puts "Drink Category: #{cho.strCategory}".center(117)
-            seperator_mid
-            puts "Instructions: #{cho.strInstructions}".center(117)
-            separator_end
+    def menu_selection(drink)
+        shots = TotalDrinks::CocktailsDB.find_by_name(drink)
+        if shots
+            puts "Excellent choice!"
+            drink_details(shots)
+        elsif drink == "close"
+            nothing_for_me
+        else
+            wrong_choice
+            menu
         end
+    end
+
+    def drink_details(cocktails)
+        seperator
+        puts "#{cocktails.strDrink}".cyan.on_light_white.bold.center(132)
+        seperator_mid
+        puts "Drink ID: #{cocktails.idDrink}".center(117)
+        seperator_mid
+        puts "Drink Category: #{cocktails.strCategory}".center(117)
+        seperator_mid
+        puts "Instructions: #{cocktails.strInstructions}".center(117)
+        separator_end
         mini_menu
     end
 
@@ -105,7 +116,6 @@ class TotalDrinks::CLI
     
     def wrong_choice
         puts "Oh no, we don't serve that, please make another selection.".red.blink
-        main
     end
     
     def nothing_for_me

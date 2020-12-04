@@ -20,7 +20,7 @@ class TotalDrinks::CocktailsDB
     end
 
     def self.find_by_name(drink)
-        self.all.select do |cocktail|
+        self.all.find do |cocktail|
             cocktail.strDrink.downcase == drink
         end
     end
